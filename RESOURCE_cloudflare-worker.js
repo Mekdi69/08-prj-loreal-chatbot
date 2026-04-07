@@ -49,10 +49,12 @@ export default {
 
     // NEW request format
     const requestBody = {
-      model: "gpt-4o-mini",
-      input: body.messages,
-      max_output_tokens: 300,
-    };
+    model: "gpt-4o-mini",
+    input: body.messages
+      .map(m => `${m.role}: ${m.content}`)
+      .join("\n"),
+  max_output_tokens: 300,
+};
 
     try {
       const response = await fetch(apiUrl, {
