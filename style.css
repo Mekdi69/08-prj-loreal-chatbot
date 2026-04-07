@@ -78,6 +78,56 @@ body {
   width: 100%;
 }
 
+/* chat header */
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gray-line);
+}
+
+.chat-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--black);
+  margin: 0;
+}
+
+.clear-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(176, 138, 68, 0.1);
+  border: 1px solid rgba(176, 138, 68, 0.3);
+  border-radius: 8px;
+  color: var(--black);
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.clear-btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--black);
+}
+
+.clear-btn:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.clear-btn .material-icons {
+  font-size: 20px;
+}
+
 /* chat window */
 .chatbox {
   margin: 34px 0 24px;
@@ -198,6 +248,75 @@ body {
   white-space: nowrap;
   border: 0;
 }
+
+/* Product cards */
+.products-container {
+  display: flex;
+  gap: 12px;
+  margin: 12px 0 0 0;
+  flex-wrap: wrap;
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: linear-gradient(135deg, #f7f3ea 0%, #fff9f0 100%);
+  border: 1px solid #dec79b;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(176, 138, 68, 0.15);
+  flex: 1;
+  min-width: 120px;
+  max-width: 140px;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(176, 138, 68, 0.25);
+}
+
+.product-image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--gray-soft);
+}
+
+.product-name {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--black);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.product-description {
+  font-size: 11px;
+  color: #666;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Footer */
 
 /* footer */
 .site-footer {
