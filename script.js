@@ -153,6 +153,14 @@ chatForm.addEventListener("submit", async (e) => {
 
   const message = userInput.value.trim();
   if (!message) return;
+  // Restart conversation when user types "restart"
+  if (message.toLowerCase() === "restart") {
+    conversationHistory = [];
+    localStorage.removeItem(HISTORY_KEY);
+    chatWindow.innerHTML = "";
+    showBotResponseQuick("Conversation restarted. How can I help with L'Oréal beauty today?");
+    return;
+  }
 
   showMessage("user", `You: ${message}`);
   userInput.value = "";
