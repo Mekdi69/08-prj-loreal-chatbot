@@ -4,7 +4,7 @@ const userInput = document.getElementById("userInput");
 const chatWindow = document.getElementById("chatWindow");
 
 // Replace this with your own Cloudflare Worker URL.
-const WORKER_URL = "https://YOUR-WORKER-NAME.YOUR-SUBDOMAIN.workers.dev";
+const WORKER_URL = "https://lorchatbot.mekdimbekele.workers.dev/";
 
 // Stores the ongoing chat context (without exposing secrets).
 const conversationHistory = [];
