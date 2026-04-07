@@ -44,17 +44,13 @@ export default {
       );
     }
 
-    // NEW OpenAI API endpoint
-    const apiUrl = "https://api.openai.com/v1/responses";
+    const apiUrl = "https://api.openai.com/v1/chat/completions";
 
-    // NEW request format
     const requestBody = {
-    model: "gpt-4o-mini",
-    input: body.messages
-      .map(m => `${m.role}: ${m.content}`)
-      .join("\n"),
-  max_output_tokens: 300,
-};
+      model: "gpt-4o-mini",
+      messages: body.messages,
+      max_tokens: 300,
+    };
 
     try {
       const response = await fetch(apiUrl, {
@@ -75,8 +71,8 @@ export default {
         });
       }
 
-      // Convert new API format → old format expected by your front-end
-      const text = data.output_text || "No response generated.";
+      const text =
+        data.choices?.[0]?.message?.content || "No response generated.";
 
       const formatted = {
         choices: [
@@ -92,6 +88,7 @@ export default {
         status: 200,
         headers: corsHeaders,
       });
+
     } catch (err) {
       return new Response(
         JSON.stringify({ error: "Server error while contacting OpenAI." }),
@@ -100,4 +97,4 @@ export default {
     }
   },
 };
- 
+
